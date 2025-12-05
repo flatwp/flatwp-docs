@@ -72,7 +72,7 @@ const config: Config = {
       title: 'FlatWP',
       logo: {
         alt: 'FlatWP Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo-light.svg',
       },
       items: [
         {
