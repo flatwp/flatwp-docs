@@ -33,6 +33,9 @@ Before getting started with FlatWP, make sure you have:
   <a href="/docs/quick-start" class="button button--primary button--lg">
     Quick Start Guide →
   </a>
+  <a href="/docs/architecture" class="button button--secondary button--lg" style={{marginLeft: '1rem'}}>
+    Architecture
+  </a>
 </div>
 
 ## Repository Structure
@@ -77,8 +80,10 @@ Ready to build your first FlatWP site? Follow our [Quick Start Guide](/docs/quic
 ### Learning Path
 
 1. **[Quick Start](/docs/quick-start)** - Set up your first project
-2. **Explore Tutorials** - Learn by building
-3. **Community Support** - Get help when needed
+2. **[Architecture](/docs/architecture)** - Understand the system design
+3. **[Configuration](/docs/configuration)** - Customize your setup
+4. **[Deployment](/docs/deployment)** - Ship to production
+5. **[WordPress Plugin](/docs/wordpress-plugin)** - Plugin features
 
 ## Community & Support
 
