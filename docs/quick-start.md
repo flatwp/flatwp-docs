@@ -4,27 +4,30 @@ sidebar_position: 2
 
 # Quick Start
 
-Get your FlatWP site up and running in less than 5 minutes.
+Get your FlatWP site up and running in under 10 minutes!
 
 ## Prerequisites
 
-Before you begin, ensure you have:
+Before you begin, make sure you have:
 
 - **Node.js 20.0+** installed ([Download](https://nodejs.org/))
-- **WordPress 6.4+** with WPGraphQL plugin
-- **Package manager**: npm, yarn, or pnpm
+- **WordPress 6.0+** running with admin access
+- **Package manager**: npm, yarn, or pnpm (we recommend pnpm)
 - A code editor (VS Code recommended)
+
+Don't have WordPress yet? Check out [WordPress.org](https://wordpress.org/download/) for installation guides.
 
 ## Step 1: Clone the Starter Template
 
 Clone the FlatWP starter repository:
 
 ```bash
+# Clone the repository
 git clone https://github.com/flatwp/flatwp-starter.git my-flatwp-site
 cd my-flatwp-site
 ```
 
-Or use the GitHub template:
+Or use the GitHub template (cleaner, no git history):
 
 ```bash
 npx degit flatwp/flatwp-starter my-flatwp-site
@@ -33,18 +36,22 @@ cd my-flatwp-site
 
 ## Step 2: Install Dependencies
 
-Install the required packages:
+Install the required packages (this takes about 2 minutes):
 
 ```bash
-# Using npm
+# Using pnpm (recommended - faster)
+pnpm install
+
+# Or using npm
 npm install
 
-# Using yarn
+# Or using yarn
 yarn install
-
-# Using pnpm
-pnpm install
 ```
+
+:::tip Why pnpm?
+pnpm is faster and uses less disk space than npm. Install it with: `npm install -g pnpm`
+:::
 
 ## Step 3: Configure Environment Variables
 
@@ -76,150 +83,292 @@ openssl rand -base64 32
 
 ## Step 4: Set Up WordPress
 
-### Install WPGraphQL Plugin
+### Install Required Plugins
 
-1. Log in to your WordPress admin
-2. Navigate to **Plugins → Add New**
+#### 1. Install WPGraphQL
+
+1. Log in to your WordPress admin dashboard
+2. Go to **Plugins → Add New**
 3. Search for "WPGraphQL"
-4. Install and activate the plugin
+4. Click **Install Now**, then **Activate**
 
-### Install FlatWP Companion Plugin (Optional)
+#### 2. Install FlatWP Companion Plugin
 
-The FlatWP Companion plugin adds enhanced features:
+The FlatWP plugin connects WordPress to Next.js and provides ACF blocks:
 
-1. Download the latest release from [GitHub](https://github.com/flatwp/flatwp-plugin)
-2. Upload to **Plugins → Add New → Upload Plugin**
-3. Activate the plugin
+1. Download `flatwp-react-plugin.zip` from [GitHub Releases](https://github.com/flatwp/flatwp-plugin/releases)
+2. Go to **Plugins → Add New → Upload Plugin**
+3. Choose the ZIP file and click **Install Now**
+4. Click **Activate**
+
+#### 3. Build the Plugin Dashboard (Important!)
+
+The plugin needs to be built before it works:
+
+```bash
+# SSH into your WordPress server or use local terminal
+cd /path/to/wp-content/plugins/flatwp-react/admin-react
+
+# Install and build (first time only)
+npm install
+npm run build
+```
 
 ### Configure Plugin Settings
 
-Go to **Settings → FlatWP** and configure:
+1. In WordPress, find the new **FlatWP** menu item (lightning bolt icon)
+2. Click on it to open the dashboard
+3. Click **Settings** tab
+4. Enter your configuration:
 
-- **Next.js Site URL**: `http://localhost:3000` (development) or your production URL
-- **Revalidation Secret**: Same as in `.env.local`
-- **Enable Webhooks**: Check this box
+```
+Next.js Site URL: http://localhost:3000
+Revalidation Secret: [paste your secret from .env.local]
+Preview Secret: [paste your preview secret from .env.local]
+```
+
+5. Check **Enable Webhooks**
+6. Click **Save Settings**
+7. Look for a green checkmark showing "Connected"
 
 ## Step 5: Generate GraphQL Types
 
 Generate TypeScript types from your WordPress GraphQL schema:
 
 ```bash
+# Using pnpm
+pnpm graphql:codegen
+
+# Or using npm
 npm run graphql:codegen
 ```
 
-This creates type-safe interfaces in `graphql/generated/`.
+This creates type-safe interfaces in `graphql/generated/`. You'll see output like:
+
+```
+✔ Parse Configuration
+✔ Generate outputs
+```
 
 ## Step 6: Start Development Server
 
 Run the development server:
 
 ```bash
+# Using pnpm
+pnpm dev
+
+# Or using npm
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. You should see your FlatWP site! 🎉
 
+:::tip
+The development server runs on port 3000 by default. If you need to change it, edit `package.json`.
+:::
+
 ## Step 7: Create Your First Page
+
+Let's create a simple "About" page to see everything working:
 
 ### In WordPress
 
-1. Create a new page in WordPress admin
-2. Add some content and featured image
-3. Publish the page
+1. Go to **Pages → Add New**
+2. Title: "About Us"
+3. Scroll down to **Page Builder**
+4. Click "Add Content Block"
+5. Select "Hero - Centered"
+6. Fill in:
+   - Heading: "About Our Company"
+   - Subheading: "We build amazing things"
+   - Button Text: "Contact Us"
+   - Button URL: "/contact"
+7. Click **Publish**
 
-### In Your Next.js App
+### View Your Page
 
-The page will automatically appear in your Next.js site through GraphQL queries.
+1. Go to `http://localhost:3000` in your browser
+2. Your new "About Us" page should appear automatically
+3. Click on it to see the hero block you created! ✨
 
-## Verify Installation
+## ✅ Success Checklist
 
-Check that everything is working:
+Make sure everything is working:
 
-1. **Homepage loads**: Visit `http://localhost:3000`
-2. **Pages render**: Navigate to a WordPress page
-3. **GraphQL works**: Check the Network tab for successful GraphQL requests
-4. **Hot reload**: Edit a component and see instant updates
+- [ ] Next.js site loads at `http://localhost:3000`
+- [ ] WordPress pages appear in navigation
+- [ ] Page Builder blocks render correctly
+- [ ] FlatWP dashboard shows green "Connected" status
+- [ ] Making changes in WordPress updates the Next.js site
+- [ ] No errors in browser console (F12)
 
-## Common Issues
+If everything is checked, congratulations! Your FlatWP site is running! 🎉
+
+## Common Issues & Solutions
 
 ### GraphQL Endpoint Not Found
 
-**Error**: `Failed to fetch from WordPress GraphQL endpoint`
+**Error**: "Failed to fetch from WordPress GraphQL endpoint"
 
-**Solution**:
-- Verify WPGraphQL plugin is activated
-- Check your `NEXT_PUBLIC_WORDPRESS_API_URL` is correct
-- Test the endpoint: `https://your-site.com/graphql`
+**Solutions**:
+1. Verify WPGraphQL plugin is activated in WordPress
+2. Check your `.env.local` has the correct `NEXT_PUBLIC_WORDPRESS_API_URL`
+3. Test the endpoint in browser: `https://your-wordpress-site.com/graphql`
+4. Make sure WordPress site is accessible from your computer
 
 ### CORS Errors
 
-**Error**: `Access-Control-Allow-Origin blocked`
+**Error**: "Access-Control-Allow-Origin blocked"
 
-**Solution**:
-Add to your WordPress `wp-config.php`:
+**Solution**: Add to WordPress `wp-config.php` (above "That's all, stop editing!"):
+
 ```php
+// Allow Next.js to access WordPress
 header('Access-Control-Allow-Origin: http://localhost:3000');
 header('Access-Control-Allow-Credentials: true');
 ```
 
+For production, replace `localhost:3000` with your actual domain.
+
 ### GraphQL Types Not Generated
 
-**Error**: `Cannot find module './graphql/generated'`
+**Error**: "Cannot find module './graphql/generated'"
 
 **Solution**:
 ```bash
-npm run graphql:codegen
+# Make sure WordPress is running
+# Then generate types
+pnpm graphql:codegen
 ```
 
-Ensure your WordPress GraphQL endpoint is accessible.
+If it fails, check:
+- WordPress site is accessible
+- WPGraphQL plugin is activated
+- `.env.local` has correct URL
+
+### FlatWP Dashboard Shows "Disconnected"
+
+**Problem**: Red status in WordPress FlatWP dashboard
+
+**Solutions**:
+1. Make sure Next.js dev server is running (`pnpm dev`)
+2. Check secrets match between WordPress and `.env.local`
+3. Verify Next.js URL is correct in WordPress settings
+4. Test the revalidation endpoint:
+   ```bash
+   curl -X POST http://localhost:3000/api/revalidate \
+     -H "Content-Type: application/json" \
+     -d '{"secret":"your-secret","paths":["/"]}'
+   ```
+
+### Plugin Dashboard Not Loading
+
+**Problem**: White screen when clicking FlatWP menu
+
+**Solutions**:
+1. Make sure you ran `npm run build` in the plugin's `admin-react` folder
+2. Check browser console (F12) for JavaScript errors
+3. Verify file permissions on the `dist` folder
+4. Try deactivating and reactivating the plugin
 
 ## Next Steps
 
-Now that your FlatWP site is running:
+Now that your FlatWP site is running, here's what to explore:
 
-1. **Customize Theme** - Brand your site with custom colors and components
-2. **Add Content Types** - Extend functionality with custom post types
-3. **Configure Rendering** - Optimize performance with ISR strategies
-4. **Deploy to Vercel** - Go live with your production site
+### Immediate Next Steps
 
-## Development Workflow
+1. **[ACF Setup Guide](/docs/acf-setup)** - Learn how to use all 8 content block types
+2. **[Customization](/docs/customization)** - Change colors, fonts, and components
+3. **[WordPress Plugin](/docs/wordpress-plugin)** - Explore the React dashboard features
+
+### When You're Ready
+
+4. **[Configuration](/docs/configuration)** - Advanced settings and optimization
+5. **[Deployment](/docs/deployment)** - Deploy your site to production
+6. **[Architecture](/docs/architecture)** - Understand how everything works
+
+## Quick Tips
+
+### Daily Development
+
+```bash
+# Start working
+pnpm dev
+
+# After WordPress changes
+pnpm graphql:codegen
+
+# Build for production
+pnpm build
+```
 
 ### Common Commands
 
 ```bash
 # Development
-npm run dev              # Start dev server
-npm run build            # Build for production
-npm run start            # Run production build locally
+pnpm dev                  # Start dev server (port 3000)
+pnpm build                # Build for production
+pnpm start                # Run production build locally
 
 # Code Quality
-npm run lint             # Run ESLint
-npm run type-check       # TypeScript checking
-npm run graphql:codegen  # Regenerate GraphQL types
+pnpm lint                 # Check code quality
+pnpm type-check           # TypeScript validation
+pnpm graphql:codegen      # Update WordPress types
 
 # Utilities
-npm run clean            # Clear build cache
+pnpm clean                # Clear build cache
 ```
 
-### File Structure
+### Project Structure
 
 ```
 my-flatwp-site/
-├── app/                 # Next.js App Router pages
-├── components/          # React components
-├── lib/                # Utilities & WordPress client
-├── graphql/            # GraphQL queries & types
-├── public/             # Static assets
-├── .env.local          # Environment variables (not committed)
-└── next.config.js      # Next.js configuration
+├── app/                  # Next.js pages and routes
+│   ├── (pages)/         # Page routes
+│   ├── api/             # API endpoints
+│   └── blog/            # Blog section
+├── components/           # React components
+│   ├── blocks/          # ACF block components
+│   ├── ui/              # UI components
+│   └── ...              # Other components
+├── lib/                 # Utilities and helpers
+│   └── wordpress/       # WordPress client & adapters
+├── graphql/             # GraphQL queries
+│   └── generated/       # Auto-generated types
+├── public/              # Static files (images, etc.)
+├── .env.local           # Your secrets (not in git)
+└── next.config.ts       # Next.js configuration
 ```
 
-## Get Help
+## Learning Resources
 
-If you run into issues:
+### Documentation
 
-- **Check the docs**: [flatwp.com/docs](https://flatwp.com/docs)
-- **Ask the community**: [GitHub Discussions](https://github.com/flatwp/flatwp-starter/discussions)
-- **Report bugs**: [GitHub Issues](https://github.com/flatwp/flatwp-starter/issues)
+- **Full Docs**: [flatwp.com/docs](https://flatwp.com/docs)
+- **ACF Guide**: [/docs/acf-setup](/docs/acf-setup)
+- **Examples**: Check `components/blocks/` for block examples
+
+### Community
+
+- **Questions**: [GitHub Discussions](https://github.com/flatwp/flatwp-starter/discussions)
+- **Bug Reports**: [GitHub Issues](https://github.com/flatwp/flatwp-starter/issues)
+- **Updates**: Follow [@flatwp](https://twitter.com/flatwp) on Twitter
+
+### Video Tutorials (Coming Soon)
+
+- Setting up your first site
+- Creating custom blocks
+- Deploying to production
+- Advanced customization
+
+## Need Help?
+
+Got stuck? Here's how to get help:
+
+1. **Check this guide** - Reread the troubleshooting section
+2. **Search docs** - Use the search bar at the top
+3. **Ask the community** - Post in [GitHub Discussions](https://github.com/flatwp/flatwp-starter/discussions)
+4. **Report bugs** - Open an [issue on GitHub](https://github.com/flatwp/flatwp-starter/issues)
 
 Happy building! 🚀
