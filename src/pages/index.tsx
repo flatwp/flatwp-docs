@@ -19,9 +19,15 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--primary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Get Started →
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/quick-start"
+            style={{marginLeft: '1rem'}}>
+            Quick Start ⚡
           </Link>
         </div>
       </div>
@@ -33,8 +39,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title} Documentation`}
+      description="Build modern, performant headless WordPress sites with Next.js 14+, TypeScript, and TailwindCSS. Official FlatWP documentation.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

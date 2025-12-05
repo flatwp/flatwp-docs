@@ -2,46 +2,95 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to **FlatWP** - the modern way to build headless WordPress sites with Next.js.
 
-## Getting Started
+## What is FlatWP?
 
-Get started by **creating a new site**.
+FlatWP is a performance-focused, production-ready starter kit that combines WordPress's powerful content management with Next.js's advanced rendering capabilities. Build blazing-fast, type-safe websites that delight both developers and end users.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Key Features
 
-### What you'll need
+- ⚡ **Performance First**: 95+ Lighthouse scores with ISR and optimized delivery
+- 🎯 **Type-Safe**: Full TypeScript strict mode with auto-generated GraphQL types
+- 🚀 **Production Ready**: WordPress GraphQL integration, preview mode, ACF support
+- 🎨 **Modern Stack**: Next.js 14+ App Router, TailwindCSS v4, Shadcn/ui
+- 📦 **Open Source**: MIT licensed with active community support
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## What You'll Need
 
-## Generate a new site
+Before getting started with FlatWP, make sure you have:
 
-Generate a new Docusaurus site using the **classic template**.
+- **Node.js** version 20.0 or higher
+- **WordPress** 6.4+ with WPGraphQL plugin installed
+- **Package Manager**: npm, yarn, or pnpm
+- Basic knowledge of React and Next.js
 
-The classic template will automatically be added to your project after you run the command:
+## Quick Links
 
-```bash
-npm init docusaurus@latest my-website classic
+<div class="margin-vert--lg">
+  <a href="/docs/quick-start" class="button button--primary button--lg">
+    Quick Start Guide →
+  </a>
+  <a href="/docs/architecture" class="button button--secondary button--lg" style={{marginLeft: '1rem'}}>
+    Architecture Overview
+  </a>
+</div>
+
+## Repository Structure
+
+FlatWP follows a **Hybrid Mono-as-Poly** architecture:
+
+```
+flatwp-dev/              # Private development monorepo
+├── apps/
+│   ├── web/            # Production site (flatwp.com)
+│   ├── starter/        → flatwp/FlatWP-Starter (Public)
+│   └── plugin/         → flatwp/FlatWP-Plugin (Public)
+├── packages/
+│   ├── typescript-config/
+│   └── types/
+└── docs/
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Tech Stack
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### Frontend
+- **Framework**: Next.js 14+ (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: TailwindCSS v4
+- **UI Components**: Shadcn/ui + Radix UI
+- **GraphQL Client**: Apollo Client or urql
 
-## Start your site
+### Backend
+- **CMS**: WordPress 6.4+
+- **GraphQL**: WPGraphQL plugin
+- **Custom Plugin**: FlatWP Companion
 
-Run the development server:
+### Infrastructure
+- **Hosting**: Vercel (recommended) or Netlify
+- **WordPress Hosting**: Any standard host with GraphQL support
+- **Image CDN**: Built-in next/image optimization
 
-```bash
-cd my-website
-npm run start
-```
+## Next Steps
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Ready to build your first FlatWP site? Follow our [Quick Start Guide](/docs/quick-start) to get up and running in minutes.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+### Learning Path
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+1. **[Quick Start](/docs/quick-start)** - Set up your first project
+2. **[Architecture](/docs/architecture)** - Understand the system design
+3. **[Configuration](/docs/configuration)** - Customize your setup
+4. **[Deployment](/docs/deployment)** - Ship to production
+
+## Community & Support
+
+- **GitHub**: [github.com/flatwp](https://github.com/flatwp)
+- **Discussions**: [GitHub Discussions](https://github.com/flatwp/flatwp-starter/discussions)
+- **Issues**: [GitHub Issues](https://github.com/flatwp/flatwp-starter/issues)
+- **Main Site**: [flatwp.com](https://flatwp.com)
+
+## License
+
+FlatWP is open source and MIT licensed. Build amazing things! 🚀
