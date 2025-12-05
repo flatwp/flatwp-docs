@@ -1,84 +1,251 @@
 /**
  * FlatWP Documentation Theme
- * Custom styling inspired by flatwp.com
+ * Dark theme matching flatwp.com design
  */
 
-/* Orange theme variables - Light mode */
+/* Light mode - fallback */
 :root {
-  --ifm-color-primary: #f97316;
-  --ifm-color-primary-dark: #ea580c;
-  --ifm-color-primary-darker: #dc2626;
-  --ifm-color-primary-darkest: #c2410c;
-  --ifm-color-primary-light: #fb923c;
-  --ifm-color-primary-lighter: #fdba74;
-  --ifm-color-primary-lightest: #fed7aa;
+  --ifm-color-primary: #ff6b2b;
+  --ifm-color-primary-dark: #f55a1a;
+  --ifm-color-primary-darker: #ea5410;
+  --ifm-color-primary-darkest: #c14509;
+  --ifm-color-primary-light: #ff7c3c;
+  --ifm-color-primary-lighter: #ff8d4d;
+  --ifm-color-primary-lightest: #ffb07f;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 }
 
-/* Orange theme variables - Dark mode (default) */
+/* Dark mode - primary theme matching flatwp.com */
 [data-theme='dark'] {
-  --ifm-color-primary: #fb923c;
-  --ifm-color-primary-dark: #f97316;
-  --ifm-color-primary-darker: #ea580c;
-  --ifm-color-primary-darkest: #dc2626;
-  --ifm-color-primary-light: #fdba74;
-  --ifm-color-primary-lighter: #fed7aa;
-  --ifm-color-primary-lightest: #ffedd5;
-  --docusaurus-highlighted-code-line-bg: rgba(249, 115, 22, 0.1);
-  --ifm-background-color: #0f172a;
-  --ifm-navbar-background-color: #1e293b;
-  --ifm-footer-background-color: #0f172a;
+  /* Primary orange accent */
+  --ifm-color-primary: #ff6b2b;
+  --ifm-color-primary-dark: #f55a1a;
+  --ifm-color-primary-darker: #ea5410;
+  --ifm-color-primary-darkest: #c14509;
+  --ifm-color-primary-light: #ff7c3c;
+  --ifm-color-primary-lighter: #ff8d4d;
+  --ifm-color-primary-lightest: #ffb07f;
+
+  /* Near-black backgrounds */
+  --ifm-background-color: #0d0d0d;
+  --ifm-background-surface-color: #151515;
+  --ifm-navbar-background-color: #0d0d0d;
+  --ifm-footer-background-color: #0d0d0d;
+
+  /* Text colors */
+  --ifm-font-color-base: #e5e5e5;
+  --ifm-font-color-secondary: #a3a3a3;
+  --ifm-heading-color: #ffffff;
+
+  /* Borders and dividers */
+  --ifm-color-emphasis-300: #262626;
+  --ifm-hr-background-color: #262626;
+
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(255, 107, 43, 0.1);
+  --ifm-code-background: #1a1a1a;
+
+  /* Sidebar */
+  --ifm-menu-color: #a3a3a3;
+  --ifm-menu-color-active: #ffffff;
+  --ifm-menu-color-background-active: rgba(255, 107, 43, 0.1);
 }
 
-/* Hero section styling */
+/* Hero section - dramatic dark background */
 .hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #0d0d0d;
   color: #fff;
+  padding: 6rem 0;
 }
 
 .hero__title {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
 .hero__subtitle {
-  font-size: 1.5rem;
-  opacity: 0.9;
+  font-size: 1.25rem;
+  color: #a3a3a3;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  line-height: 1.6;
 }
 
-/* Button styling */
+/* Button styling - vibrant orange */
 .button--primary {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: #ff6b2b;
   border: none;
   font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
 .button--primary:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: #f55a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.3);
 }
 
-/* Code blocks */
+.button--secondary {
+  background: transparent;
+  border: 1px solid #262626;
+  color: #e5e5e5;
+}
+
+.button--secondary:hover {
+  background: #151515;
+  border-color: #404040;
+}
+
+/* Code blocks - darker */
 .prism-code {
   border-radius: 8px;
+  background: #1a1a1a !important;
 }
 
 /* Links */
 a {
-  color: var(--ifm-color-primary);
+  color: #ff6b2b;
+  text-decoration: none;
 }
 
 a:hover {
-  color: var(--ifm-color-primary-dark);
+  color: #ff7c3c;
+  text-decoration: none;
 }
 
-/* Cards */
+/* Cards - dark with subtle hover */
 .card {
+  background: #151515;
+  border: 1px solid #262626;
   border-radius: 12px;
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
+  border-color: #404040;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Feature cards on homepage */
+.text--center h3 {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.text--center p {
+  color: #a3a3a3;
+}
+
+/* Navbar */
+.navbar {
+  background: #0d0d0d;
+  border-bottom: 1px solid #262626;
+  padding: 0.75rem 0;
+}
+
+.navbar__link {
+  color: #a3a3a3;
+  font-weight: 500;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: #ffffff;
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  background: #0d0d0d;
+  border-right: 1px solid #262626;
+}
+
+.menu__link {
+  color: #a3a3a3;
+}
+
+.menu__link:hover {
+  color: #ffffff;
+  background: #151515;
+}
+
+.menu__link--active {
+  color: #ff6b2b;
+  background: rgba(255, 107, 43, 0.1);
+}
+
+/* Footer */
+.footer {
+  background: #0d0d0d;
+  border-top: 1px solid #262626;
+  color: #a3a3a3;
+}
+
+.footer__title {
+  color: #ffffff;
+}
+
+.footer__link-item {
+  color: #a3a3a3;
+}
+
+.footer__link-item:hover {
+  color: #ff6b2b;
+}
+
+/* Tables */
+table {
+  border-color: #262626;
+}
+
+thead {
+  background: #151515;
+}
+
+/* Admonitions */
+.admonition {
+  border-left-width: 4px;
+  background: #151515;
+  border-color: #262626;
+}
+
+.admonition-heading {
+  color: #ffffff;
+}
+
+/* Search bar */
+.navbar__search-input {
+  background: #151515;
+  border: 1px solid #262626;
+  color: #e5e5e5;
+}
+
+.navbar__search-input:focus {
+  border-color: #ff6b2b;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
 }
