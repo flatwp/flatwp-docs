@@ -177,10 +177,10 @@ Ensure your WordPress GraphQL endpoint is accessible.
 
 Now that your FlatWP site is running:
 
-1. **[Customize Theme](/docs/customization)** - Brand your site
-2. **[Add Content Types](/docs/content-types)** - Extend functionality
-3. **[Configure Rendering](/docs/rendering-strategies)** - Optimize performance
-4. **[Deploy to Vercel](/docs/deployment)** - Go live
+1. **Customize Theme** - Brand your site with custom colors and components
+2. **Add Content Types** - Extend functionality with custom post types
+3. **Configure Rendering** - Optimize performance with ISR strategies
+4. **Deploy to Vercel** - Go live with your production site
 
 ## Development Workflow
 

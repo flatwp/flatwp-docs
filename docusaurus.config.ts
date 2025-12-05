@@ -109,8 +109,8 @@ const config: Config = {
               to: '/docs/quick-start',
             },
             {
-              label: 'Architecture',
-              to: '/docs/architecture',
+              label: 'Tutorials',
+              to: '/docs/tutorial-basics/create-a-document',
             },
           ],
         },
