@@ -1,11 +1,55 @@
+/**
+ * Homepage Features Styles
+ */
+
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+  background: #0a0a0a;
+}
+
+/* Ensure text is visible on dark background */
+.features h3 {
+  color: #ffffff !important;
+}
+
+.features p {
+  color: #d4d4d4 !important;
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.featureSvg:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 3rem 0;
+  }
+
+  .featureSvg {
+    height: 160px;
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .features {
+    padding: 2rem 0;
+  }
+
+  .featureSvg {
+    height: 140px;
+    width: 140px;
+  }
 }

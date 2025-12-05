@@ -15,7 +15,12 @@ Before you begin, make sure you have:
 - **Package manager**: npm, yarn, or pnpm (we recommend pnpm)
 - A code editor (VS Code recommended)
 
-Don't have WordPress yet? Check out [WordPress.org](https://wordpress.org/download/) for installation guides.
+:::info Don't Have WordPress Yet?
+Check out [WordPress.org](https://wordpress.org/download/) for installation guides. Local development options include:
+- [Local by Flywheel](https://localwp.com/) - Easy local WordPress (recommended)
+- [MAMP](https://www.mamp.info/) - macOS/Windows local server
+- [XAMPP](https://www.apachefriends.org/) - Cross-platform solution
+:::
 
 ## Step 1: Clone the Starter Template
 
@@ -206,6 +211,10 @@ Make sure everything is working:
 If everything is checked, congratulations! Your FlatWP site is running! 🎉
 
 ## Common Issues & Solutions
+
+:::warning Troubleshooting
+If you encounter issues, see our detailed [Troubleshooting Guide](/docs/troubleshooting) for more solutions.
+:::
 
 ### GraphQL Endpoint Not Found
 

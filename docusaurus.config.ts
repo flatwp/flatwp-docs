@@ -42,6 +42,8 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/flatwp/flatwp-docs/tree/main/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -61,19 +63,34 @@ const config: Config = {
     ],
   ],
 
+  themes: ['@docusaurus/theme-live-codeblock'],
+
   themeConfig: {
     image: 'img/flatwp-social-card.jpg',
+    metadata: [
+      {name: 'keywords', content: 'flatwp, wordpress, nextjs, headless cms, typescript, graphql'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {property: 'og:type', content: 'website'},
+    ],
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
       respectPrefersColorScheme: false,
     },
+    liveCodeBlock: {
+      playgroundPosition: 'bottom',
+    },
     navbar: {
-      title: 'FlatWP',
+      title: '',
       logo: {
         alt: 'FlatWP Logo',
-        src: 'img/logo-light.svg',
+        src: 'img/logo-horizontal.svg',
+        srcDark: 'img/logo-horizontal.svg',
+        width: 'auto',
+        height: 40,
+        style: {maxHeight: '40px'},
       },
+      hideOnScroll: false,
       items: [
         {
           type: 'docSidebar',
@@ -109,8 +126,12 @@ const config: Config = {
               to: '/docs/quick-start',
             },
             {
-              label: 'Tutorials',
-              to: '/docs/tutorial-basics/create-a-document',
+              label: 'FAQ',
+              to: '/docs/faq',
+            },
+            {
+              label: 'Troubleshooting',
+              to: '/docs/troubleshooting',
             },
           ],
         },
@@ -149,8 +170,21 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ['bash', 'typescript', 'javascript', 'json', 'php', 'graphql', 'jsx', 'tsx'],
+      magicComments: [
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: {start: 'highlight-start', end: 'highlight-end'},
+        },
+        {
+          className: 'code-block-error-line',
+          line: 'error-next-line',
+        },
+      ],
     },
+    algolia: undefined, // Placeholder for future search integration
   } satisfies Preset.ThemeConfig,
 };
 

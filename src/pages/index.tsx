@@ -25,8 +25,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/quick-start"
-            style={{marginLeft: '1rem'}}>
+            to="/docs/quick-start">
             Quick Start ⚡
           </Link>
         </div>

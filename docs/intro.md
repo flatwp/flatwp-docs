@@ -29,6 +29,16 @@ Before getting started with FlatWP, make sure you have:
 - **Package Manager**: npm, yarn, or pnpm (we recommend pnpm)
 - Basic knowledge of WordPress and web development
 
+:::info Prerequisites Check
+Not sure if you have everything? Run these commands:
+```bash
+node --version  # Should be 20.0 or higher
+npm --version   # Any recent version
+```
+:::
+
+
+
 ## Quick Links
 
 <div class="margin-vert--lg">
@@ -79,6 +89,10 @@ Built with modern, battle-tested technologies:
 - **WordPress** - Powerful content management
 - **WPGraphQL** - Efficient data fetching
 - **ACF Pro** - Flexible custom fields (optional)
+
+:::tip Why These Technologies?
+Each tool is chosen for production-ready reliability, active community support, and excellent documentation. You're building on a solid foundation used by thousands of sites.
+:::
 
 ## Next Steps
 

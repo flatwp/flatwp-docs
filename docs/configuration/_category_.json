@@ -1,0 +1,17 @@
+{
+  "label": "Configuration",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Configuration Guide",
+    "description": "Learn how to configure FlatWP for your project. From basic setup to advanced rendering strategies, this guide covers everything you need to customize FlatWP to your needs.",
+    "keywords": [
+      "configuration",
+      "setup",
+      "flatwp config",
+      "rendering strategies",
+      "environment variables"
+    ]
+  },
+  "collapsed": false
+}

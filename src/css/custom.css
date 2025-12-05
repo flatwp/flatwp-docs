@@ -1,231 +1,485 @@
 /**
- * FlatWP Documentation Theme
- * Dark theme matching flatwp.com design
+ * FlatWP Documentation - Clean Professional Design System
+ * Dark theme with orange branding and excellent readability
+ * Inspired by Vercel, Stripe, and Next.js documentation
  */
 
-/* Light mode - fallback */
+/* ============================================
+   DESIGN TOKENS - COLOR SYSTEM
+   ============================================ */
+
 :root {
-  --ifm-color-primary: #ff6b2b;
-  --ifm-color-primary-dark: #f55a1a;
-  --ifm-color-primary-darker: #ea5410;
-  --ifm-color-primary-darkest: #c14509;
-  --ifm-color-primary-light: #ff7c3c;
-  --ifm-color-primary-lighter: #ff8d4d;
-  --ifm-color-primary-lightest: #ffb07f;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Orange Brand Colors */
+  --flatwp-orange: #ff6b2b;
+  --flatwp-orange-dark: #f55a1a;
+  --flatwp-orange-darker: #ea5410;
+  --flatwp-orange-light: #ff7c3c;
+  --flatwp-orange-lighter: #ff8d4d;
+  --flatwp-orange-subtle: rgba(255, 107, 43, 0.1);
+  --flatwp-orange-hover: rgba(255, 107, 43, 0.15);
+
+  /* Dark Background System */
+  --flatwp-bg-primary: #0a0a0a;
+  --flatwp-bg-secondary: #111111;
+  --flatwp-bg-tertiary: #1a1a1a;
+  --flatwp-bg-elevated: #1f1f1f;
+  --flatwp-bg-code: #141414;
+
+  /* Text Color System - High Contrast */
+  --flatwp-text-primary: #f5f5f5;
+  --flatwp-text-secondary: #d4d4d4;
+  --flatwp-text-tertiary: #a3a3a3;
+  --flatwp-text-muted: #737373;
+
+  /* Border System */
+  --flatwp-border-subtle: #262626;
+  --flatwp-border-medium: #404040;
+  --flatwp-border-strong: #525252;
+
+  /* Typography */
   --ifm-font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  --ifm-code-font-size: 0.9rem;
+  --ifm-line-height-base: 1.7;
+
+  /* Spacing */
+  --ifm-spacing-xs: 0.25rem;
+  --ifm-spacing-sm: 0.5rem;
+  --ifm-spacing-md: 1rem;
+  --ifm-spacing-lg: 1.5rem;
+  --ifm-spacing-xl: 2rem;
+
+  /* Border Radius */
+  --ifm-border-radius: 8px;
+  --ifm-border-radius-sm: 6px;
+  --ifm-border-radius-md: 8px;
+  --ifm-border-radius-lg: 12px;
 }
 
-/* Dark mode - primary theme matching flatwp.com */
+/* ============================================
+   DARK MODE (PRIMARY THEME)
+   ============================================ */
+
 [data-theme='dark'] {
-  /* Primary orange accent */
-  --ifm-color-primary: #ff6b2b;
-  --ifm-color-primary-dark: #f55a1a;
-  --ifm-color-primary-darker: #ea5410;
+  /* Primary Brand Color */
+  --ifm-color-primary: var(--flatwp-orange);
+  --ifm-color-primary-dark: var(--flatwp-orange-dark);
+  --ifm-color-primary-darker: var(--flatwp-orange-darker);
   --ifm-color-primary-darkest: #c14509;
-  --ifm-color-primary-light: #ff7c3c;
-  --ifm-color-primary-lighter: #ff8d4d;
+  --ifm-color-primary-light: var(--flatwp-orange-light);
+  --ifm-color-primary-lighter: var(--flatwp-orange-lighter);
   --ifm-color-primary-lightest: #ffb07f;
 
-  /* Near-black backgrounds */
-  --ifm-background-color: #0d0d0d;
-  --ifm-background-surface-color: #151515;
-  --ifm-navbar-background-color: #0d0d0d;
-  --ifm-footer-background-color: #0d0d0d;
+  /* Background Colors */
+  --ifm-background-color: var(--flatwp-bg-primary);
+  --ifm-background-surface-color: var(--flatwp-bg-secondary);
+  --ifm-navbar-background-color: var(--flatwp-bg-primary);
+  --ifm-footer-background-color: var(--flatwp-bg-primary);
 
-  /* Text colors */
-  --ifm-font-color-base: #e5e5e5;
-  --ifm-font-color-secondary: #a3a3a3;
+  /* Text Colors - High Contrast */
+  --ifm-font-color-base: var(--flatwp-text-primary);
+  --ifm-font-color-secondary: var(--flatwp-text-secondary);
   --ifm-heading-color: #ffffff;
 
-  /* Borders and dividers */
-  --ifm-color-emphasis-300: #262626;
-  --ifm-hr-background-color: #262626;
+  /* Border Colors */
+  --ifm-color-emphasis-100: #1a1a1a;
+  --ifm-color-emphasis-200: var(--flatwp-border-subtle);
+  --ifm-color-emphasis-300: #2e2e2e;
+  --ifm-color-emphasis-400: var(--flatwp-border-medium);
+  --ifm-color-emphasis-500: var(--flatwp-border-strong);
+  --ifm-hr-background-color: var(--flatwp-border-subtle);
 
-  /* Code blocks - warm peach/orange background for contrast */
-  --docusaurus-highlighted-code-line-bg: rgba(255, 107, 43, 0.15);
-  --ifm-code-background: #fff4ed;
-  --ifm-pre-background: #fff4ed;
+  /* Code Block Colors */
+  --ifm-code-background: var(--flatwp-bg-code);
+  --ifm-pre-background: var(--flatwp-bg-code);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 107, 43, 0.1);
 
   /* Sidebar */
-  --ifm-menu-color: #a3a3a3;
+  --ifm-menu-color: var(--flatwp-text-secondary);
   --ifm-menu-color-active: #ffffff;
-  --ifm-menu-color-background-active: rgba(255, 107, 43, 0.1);
+  --ifm-menu-color-background-active: var(--flatwp-orange-subtle);
+  --ifm-menu-color-background-hover: var(--flatwp-bg-tertiary);
+
+  /* Table of Contents */
+  --ifm-toc-border-color: var(--flatwp-border-subtle);
 }
 
-/* Hero section - dramatic dark background */
-.hero {
-  background: #0d0d0d;
-  color: #fff;
-  padding: 6rem 0;
+/* ============================================
+   LIGHT MODE (FALLBACK)
+   ============================================ */
+
+[data-theme='light'] {
+  /* Light mode with dark text for readability */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-font-color-secondary: #404040;
+  --ifm-heading-color: #000000;
+  --ifm-color-primary: var(--flatwp-orange);
+
+  /* Light mode borders */
+  --ifm-color-emphasis-100: #f0f0f0;
+  --ifm-color-emphasis-200: #e0e0e0;
+  --ifm-color-emphasis-300: #d0d0d0;
+  --ifm-color-emphasis-400: #b0b0b0;
+  --ifm-color-emphasis-500: #909090;
+
+  /* Code blocks in light mode */
+  --ifm-code-background: #f6f8fa;
+  --ifm-pre-background: #f6f8fa;
 }
 
-.hero__title {
-  font-size: 4rem;
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+/* ============================================
+   TYPOGRAPHY - CLEAN & READABLE
+   ============================================ */
+
+/* CRITICAL FIX: Ensure ALL headings are clearly visible with white color */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+article h1, article h2, article h3, article h4, article h5, article h6,
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6,
+.theme-doc-markdown h1, .theme-doc-markdown h2, .theme-doc-markdown h3,
+.theme-doc-markdown h4, .theme-doc-markdown h5, .theme-doc-markdown h6 {
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #ffffff;
   letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
 }
 
-.hero__subtitle {
+h2, .h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+h4, .h4 {
   font-size: 1.25rem;
-  color: #a3a3a3;
-  font-weight: 400;
+  font-weight: 600;
+  line-height: 1.5;
   margin-top: 1.5rem;
-  line-height: 1.6;
 }
 
-/* Button styling - vibrant orange with white text */
-.button--primary {
-  background: #ff6b2b;
-  border: none;
+h5, .h5 {
+  font-size: 1.125rem;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+}
+
+h6, .h6 {
   font-size: 1rem;
-  transition: all 0.2s ease;
-  color: #ffffff !important;
-}
-
-.button--primary:hover {
-  background: #f55a1a;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.3);
-  color: #ffffff !important;
-}
-
-.button--secondary {
-  background: #262626;
-  border: 1px solid #404040;
-  color: #ffffff;
   font-weight: 600;
-  transition: all 0.2s ease;
 }
 
-.button--secondary:hover {
-  background: #333333;
-  border-color: #555555;
-  color: #ff6b2b;
-  transform: translateY(-1px);
+/* Body Text */
+p {
+  color: var(--flatwp-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
 }
 
-/* Code blocks - warm peach/orange background for contrast */
-.prism-code {
-  border-radius: 8px;
-  background: #fff4ed !important;
+/* Lists */
+ul, ol {
+  color: var(--flatwp-text-secondary);
+  line-height: 1.7;
 }
 
-/* Inline code */
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Strong emphasis */
+strong, b {
+  color: var(--flatwp-text-primary);
+  font-weight: 600;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 996px) {
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.75rem; }
+  h3, .h3 { font-size: 1.25rem; }
+}
+
+/* ============================================
+   MAIN CONTENT AREA - FIX VISIBILITY
+   ============================================ */
+
+/* Ensure main content has dark background */
+.main-wrapper,
+.docMainContainer_gTbr,
+article,
+.theme-doc-markdown {
+  background: var(--flatwp-bg-primary);
+}
+
+/* Content container */
+.container,
+.theme-doc-markdown,
+.markdown {
+  color: var(--flatwp-text-secondary);
+}
+
+/* ============================================
+   LINKS - ORANGE BRAND COLOR
+   ============================================ */
+
+a {
+  color: var(--flatwp-orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--flatwp-orange-lighter);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--flatwp-orange-dark);
+}
+
+/* ============================================
+   CODE BLOCKS - DARK WITH HIGH CONTRAST
+   ============================================ */
+
+/* Inline Code */
 code {
-  background-color: #fff4ed;
-  color: #1a1a1a;
-  border: 1px solid #ffd4b8;
-  padding: 0.2rem 0.4rem;
+  background-color: var(--flatwp-bg-tertiary);
+  color: var(--flatwp-orange-lighter);
+  border: 1px solid var(--flatwp-border-subtle);
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 500;
 }
 
-/* Code block text colors for light background - high contrast */
+/* Code in headings */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: 0.85em;
+  background-color: var(--flatwp-orange-subtle);
+  color: var(--flatwp-orange);
+  border-color: rgba(255, 107, 43, 0.3);
+}
+
+/* Code Blocks */
+pre {
+  background: var(--flatwp-bg-code) !important;
+  border: 1px solid var(--flatwp-border-subtle);
+  border-radius: var(--ifm-border-radius);
+  padding: 1rem;
+}
+
+.prism-code {
+  background: var(--flatwp-bg-code) !important;
+  border-radius: var(--ifm-border-radius);
+}
+
+/* Code Block Syntax Highlighting - VS Dark Theme */
 [data-theme='dark'] .token.comment,
 [data-theme='dark'] .token.prolog,
 [data-theme='dark'] .token.doctype,
 [data-theme='dark'] .token.cdata {
-  color: #6a737d;
+  color: #6a9955;
   font-style: italic;
 }
 
 [data-theme='dark'] .token.punctuation {
-  color: #24292e;
+  color: #d4d4d4;
 }
 
-[data-theme='dark'] .token.property,
-[data-theme='dark'] .token.tag,
-[data-theme='dark'] .token.boolean,
-[data-theme='dark'] .token.number,
-[data-theme='dark'] .token.constant,
-[data-theme='dark'] .token.symbol,
-[data-theme='dark'] .token.deleted {
-  color: #d73a49;
+/* CRITICAL FIX: Plain text in code blocks must be bright */
+[data-theme='dark'] .token.plain,
+[data-theme='dark'] .token-line .token.plain {
+  color: #d4d4d4 !important;
 }
 
-[data-theme='dark'] .token.selector,
-[data-theme='dark'] .token.attr-name,
+/* Keywords - blue */
+[data-theme='dark'] .token.keyword,
+[data-theme='dark'] .token.atrule,
+[data-theme='dark'] .token.keyword.module,
+[data-theme='dark'] .token.keyword.control-flow {
+  color: #569cd6;
+  font-weight: 500;
+}
+
+/* Strings - orange */
 [data-theme='dark'] .token.string,
-[data-theme='dark'] .token.char,
-[data-theme='dark'] .token.builtin,
-[data-theme='dark'] .token.inserted {
-  color: #d73a49;
-}
-
-[data-theme='dark'] .token.operator,
-[data-theme='dark'] .token.entity,
-[data-theme='dark'] .token.url,
+[data-theme='dark'] .token.attr-value,
+[data-theme='dark'] .token.template-string,
 [data-theme='dark'] .language-css .token.string,
 [data-theme='dark'] .style .token.string {
-  color: #24292e;
+  color: #ce9178;
 }
 
-[data-theme='dark'] .token.atrule,
-[data-theme='dark'] .token.attr-value,
-[data-theme='dark'] .token.keyword {
-  color: #6f42c1;
-}
-
+/* Functions and classes - yellow */
 [data-theme='dark'] .token.function,
-[data-theme='dark'] .token.class-name {
-  color: #005cc5;
+[data-theme='dark'] .token.class-name,
+[data-theme='dark'] .token.maybe-class-name {
+  color: #dcdcaa;
 }
 
+/* Numbers and constants - light green */
+[data-theme='dark'] .token.boolean,
+[data-theme='dark'] .token.number,
+[data-theme='dark'] .token.constant {
+  color: #b5cea8;
+}
+
+/* Types and interfaces - cyan */
+[data-theme='dark'] .token.builtin,
+[data-theme='dark'] .token.type-annotation,
+[data-theme='dark'] .token.type {
+  color: #4ec9b0;
+}
+
+/* Variables and properties - light blue */
+[data-theme='dark'] .token.property,
+[data-theme='dark'] .token.variable,
+[data-theme='dark'] .token.parameter {
+  color: #9cdcfe;
+}
+
+/* Tags and selectors - teal */
+[data-theme='dark'] .token.tag,
+[data-theme='dark'] .token.selector {
+  color: #4ec9b0;
+}
+
+/* Attributes - light blue */
+[data-theme='dark'] .token.attr-name {
+  color: #9cdcfe;
+}
+
+/* Operators and entities */
+[data-theme='dark'] .token.operator,
+[data-theme='dark'] .token.entity,
+[data-theme='dark'] .token.url {
+  color: #d4d4d4;
+}
+
+/* Regex and important */
 [data-theme='dark'] .token.regex,
-[data-theme='dark'] .token.important,
-[data-theme='dark'] .token.variable {
-  color: #e36209;
+[data-theme='dark'] .token.important {
+  color: #d16969;
 }
 
-/* Links */
-a {
-  color: #ff6b2b;
-  text-decoration: none;
+/* Inserted and deleted */
+[data-theme='dark'] .token.inserted {
+  color: #b5cea8;
 }
 
-a:hover {
-  color: #ff7c3c;
-  text-decoration: none;
+[data-theme='dark'] .token.deleted {
+  color: #d16969;
 }
 
-/* Cards - dark with subtle hover */
-.card {
-  background: #151515;
-  border: 1px solid #262626;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+/* Symbols */
+[data-theme='dark'] .token.symbol,
+[data-theme='dark'] .token.char {
+  color: #ce9178;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #404040;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+/* ============================================
+   LIGHT MODE CODE SYNTAX
+   ============================================ */
+
+[data-theme='light'] .token.comment,
+[data-theme='light'] .token.prolog,
+[data-theme='light'] .token.doctype,
+[data-theme='light'] .token.cdata {
+  color: #6a737d;
+  font-style: italic;
 }
 
-/* Feature cards on homepage */
-.text--center h3 {
-  color: #ffffff;
-  font-weight: 700;
+[data-theme='light'] .token.punctuation {
+  color: #24292f;
 }
 
-.text--center p {
-  color: #a3a3a3;
+[data-theme='light'] .token.plain,
+[data-theme='light'] .token-line .token.plain {
+  color: #24292f !important;
 }
 
-/* Navbar - dark with logo padding */
+[data-theme='light'] .token.keyword,
+[data-theme='light'] .token.atrule {
+  color: #cf222e;
+}
+
+[data-theme='light'] .token.string,
+[data-theme='light'] .token.attr-value {
+  color: #0a3069;
+}
+
+[data-theme='light'] .token.function,
+[data-theme='light'] .token.class-name {
+  color: #8250df;
+}
+
+[data-theme='light'] .token.boolean,
+[data-theme='light'] .token.number,
+[data-theme='light'] .token.constant {
+  color: #0550ae;
+}
+
+[data-theme='light'] .token.property,
+[data-theme='light'] .token.variable {
+  color: #953800;
+}
+
+[data-theme='light'] .token.tag,
+[data-theme='light'] .token.selector {
+  color: #116329;
+}
+
+[data-theme='light'] .token.attr-name {
+  color: #0550ae;
+}
+
+/* ============================================
+   NAVBAR - CLEAN & MINIMAL
+   ============================================ */
+
 .navbar {
-  background: #0d0d0d;
-  border-bottom: 1px solid #262626;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--flatwp-border-subtle);
   padding: 0.75rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.navbar__logo {
-  padding: 0.5rem;
+.navbar__logo img {
+  height: 40px;
+  width: auto;
 }
 
 .navbar__title {
@@ -233,100 +487,720 @@ a:hover {
 }
 
 .navbar__link {
-  color: #a3a3a3;
+  color: var(--flatwp-text-secondary);
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-.navbar__link:hover,
-.navbar__link--active {
+.navbar__link:hover {
   color: #ffffff;
 }
 
-/* Sidebar */
+.navbar__link--active {
+  color: var(--flatwp-orange);
+  font-weight: 600;
+}
+
+/* ============================================
+   SIDEBAR - CLEAN NAVIGATION
+   ============================================ */
+
 .theme-doc-sidebar-container {
-  background: #0d0d0d;
-  border-right: 1px solid #262626;
+  background: var(--flatwp-bg-primary);
+  border-right: 1px solid var(--flatwp-border-subtle);
+}
+
+.menu {
+  padding: 1rem;
 }
 
 .menu__link {
-  color: #a3a3a3;
+  color: var(--flatwp-text-secondary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0.75rem;
 }
 
 .menu__link:hover {
   color: #ffffff;
-  background: #151515;
+  background: var(--flatwp-bg-tertiary);
 }
 
 .menu__link--active {
-  color: #ff6b2b;
-  background: rgba(255, 107, 43, 0.1);
+  color: var(--flatwp-orange);
+  background: var(--flatwp-orange-subtle);
+  font-weight: 600;
 }
 
-/* Footer */
+.menu__link--active:hover {
+  color: var(--flatwp-orange-lighter);
+  background: var(--flatwp-orange-hover);
+}
+
+/* Category labels */
+.menu__list-item-collapsible .menu__link {
+  font-weight: 600;
+  color: var(--flatwp-text-primary);
+}
+
+/* ============================================
+   BREADCRUMBS - HIGH VISIBILITY
+   ============================================ */
+
+.breadcrumbs {
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs__link {
+  color: var(--flatwp-text-secondary) !important;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--flatwp-orange) !important;
+  background: transparent;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* ============================================
+   TABLE OF CONTENTS - ORANGE ACTIVE STATE
+   ============================================ */
+
+.table-of-contents {
+  border-left: 2px solid var(--flatwp-border-subtle);
+}
+
+.table-of-contents__link {
+  color: var(--flatwp-text-secondary);
+  transition: all 0.2s ease;
+  padding-left: 0.75rem !important;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+}
+
+.table-of-contents__link:hover {
+  color: #ffffff;
+  border-left-color: var(--flatwp-border-medium);
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link.toc-highlight {
+  color: var(--flatwp-orange) !important;
+  font-weight: 600;
+  border-left-color: var(--flatwp-orange);
+}
+
+.table-of-contents__link--active:hover {
+  color: var(--flatwp-orange-lighter) !important;
+}
+
+/* ============================================
+   BUTTONS - ORANGE BRAND
+   ============================================ */
+
+.button {
+  font-family: var(--ifm-font-family-base);
+  font-weight: 600;
+  border-radius: var(--ifm-border-radius);
+  padding: 0.875rem 2rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+/* Large buttons - for hero CTAs - EXTRA LARGE */
+.button--lg {
+  padding: 1.25rem 3rem !important;
+  font-size: 1.25rem !important;
+  min-width: 200px !important;
+  font-weight: 700 !important;
+}
+
+/* Small buttons */
+.button--sm {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  min-width: 120px;
+}
+
+/* Primary Button - Orange Gradient */
+.button--primary {
+  background: linear-gradient(135deg, var(--flatwp-orange) 0%, var(--flatwp-orange-dark) 100%);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 107, 43, 0.3);
+  border: none;
+}
+
+.button--primary:hover {
+  background: linear-gradient(135deg, var(--flatwp-orange-dark) 0%, var(--flatwp-orange-darker) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.4);
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.button--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(255, 107, 43, 0.3);
+}
+
+/* Secondary Button - High Contrast with Orange Border */
+.button--secondary {
+  background: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--flatwp-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.button--secondary:hover {
+  background: var(--flatwp-orange) !important;
+  border-color: var(--flatwp-orange) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.4);
+  text-decoration: none;
+}
+
+.button--secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(255, 107, 43, 0.3);
+}
+
+/* Outline Button */
+.button--outline {
+  background: transparent;
+  border: 2px solid var(--flatwp-orange);
+  color: var(--flatwp-orange) !important;
+}
+
+.button--outline:hover {
+  background: var(--flatwp-orange);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 107, 43, 0.3);
+  text-decoration: none;
+}
+
+.button--outline:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(255, 107, 43, 0.2);
+}
+
+/* Button spacing in groups */
+.button:not(:last-child) {
+  margin-right: 0;
+}
+
+/* Hero Section Button Overrides - Maximum Visibility */
+.hero .button--lg,
+.hero--primary .button--lg {
+  padding: 1.5rem 3.5rem !important;
+  font-size: 1.375rem !important;
+  min-width: 220px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero .button--primary {
+  box-shadow: 0 8px 30px rgba(255, 107, 43, 0.5) !important;
+}
+
+.hero .button--secondary {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Responsive button sizing */
+@media screen and (max-width: 576px) {
+  .button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .button--lg {
+    padding: 1rem 2rem !important;
+    font-size: 1.125rem !important;
+  }
+
+  .hero .button--lg {
+    padding: 1.125rem 2.5rem !important;
+    font-size: 1.25rem !important;
+  }
+}
+
+/* ============================================
+   CARDS - ELEVATED SURFACES
+   ============================================ */
+
+.card {
+  background: var(--flatwp-bg-elevated);
+  border: 1px solid var(--flatwp-border-subtle);
+  border-radius: var(--ifm-border-radius-lg);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--flatwp-border-medium);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   ADMONITIONS - INFO BOXES
+   ============================================ */
+
+.admonition,
+.theme-admonition,
+[class*="admonition"] {
+  border-left-width: 4px;
+  background: var(--flatwp-bg-secondary) !important;
+  border-radius: var(--ifm-border-radius);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.admonition-heading,
+.admonitionHeading_Gvgb,
+[class*="admonitionHeading"] {
+  color: #ffffff !important;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admonition-content,
+.admonitionContent_BuS1,
+[class*="admonitionContent"] {
+  color: var(--flatwp-text-secondary) !important;
+}
+
+.admonition-content p,
+.admonitionContent_BuS1 p,
+[class*="admonitionContent"] p {
+  color: var(--flatwp-text-secondary) !important;
+}
+
+/* Type-specific colors */
+.admonition-note,
+.theme-admonition-note,
+.alert--info {
+  border-left-color: #58a6ff !important;
+  background: rgba(88, 166, 255, 0.1) !important;
+}
+
+.admonition-tip,
+.theme-admonition-tip,
+.alert--success {
+  border-left-color: #3fb950 !important;
+  background: rgba(63, 185, 80, 0.1) !important;
+}
+
+.admonition-warning,
+.theme-admonition-warning,
+.alert--warning {
+  border-left-color: #d29922 !important;
+  background: rgba(210, 153, 34, 0.1) !important;
+}
+
+.admonition-danger,
+.theme-admonition-danger,
+.alert--danger {
+  border-left-color: #f85149 !important;
+  background: rgba(248, 81, 73, 0.1) !important;
+}
+
+.admonition-info,
+.theme-admonition-info {
+  border-left-color: #79c0ff !important;
+  background: rgba(121, 192, 255, 0.1) !important;
+}
+
+/* Admonition icons */
+.admonitionIcon_Rf37,
+[class*="admonitionIcon"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admonitionIcon_Rf37 svg,
+[class*="admonitionIcon"] svg {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Code blocks inside admonitions */
+.admonition pre,
+.theme-admonition pre,
+[class*="admonition"] pre,
+.admonition .prism-code,
+.theme-admonition .prism-code,
+[class*="admonition"] .prism-code {
+  background: var(--flatwp-bg-code) !important;
+  border: 1px solid var(--flatwp-border-subtle) !important;
+}
+
+.admonition code,
+.theme-admonition code,
+[class*="admonition"] code {
+  background: var(--flatwp-bg-tertiary) !important;
+  color: var(--flatwp-orange-lighter) !important;
+}
+
+/* Override inline styles on code blocks */
+.admonition .codeBlockContainer_Ckt0,
+.theme-admonition .codeBlockContainer_Ckt0,
+[class*="admonition"] [class*="codeBlock"] {
+  background: var(--flatwp-bg-code) !important;
+}
+
+.admonition .codeBlockContent_QJqH pre,
+.theme-admonition .codeBlockContent_QJqH pre,
+[class*="admonition"] [class*="codeBlockContent"] pre {
+  background: var(--flatwp-bg-code) !important;
+  color: var(--flatwp-text-secondary) !important;
+}
+
+/* Ensure all token colors in admonitions follow dark theme */
+.admonition .token-line,
+.theme-admonition .token-line,
+[class*="admonition"] .token-line {
+  color: var(--flatwp-text-secondary) !important;
+}
+
+/* ============================================
+   TABLES - CLEAN DATA DISPLAY
+   ============================================ */
+
+table {
+  border-color: var(--flatwp-border-subtle);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background: var(--flatwp-bg-secondary);
+}
+
+th {
+  color: #ffffff;
+  font-weight: 600;
+  border-color: var(--flatwp-border-subtle);
+  padding: 0.75rem 1rem;
+}
+
+td {
+  border-color: var(--flatwp-border-subtle);
+  padding: 0.75rem 1rem;
+  color: var(--flatwp-text-secondary);
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   FOOTER - CONSISTENT DARK
+   ============================================ */
+
 .footer {
-  background: #0d0d0d;
-  border-top: 1px solid #262626;
-  color: #a3a3a3;
+  background: var(--flatwp-bg-primary);
+  border-top: 1px solid var(--flatwp-border-subtle);
+  color: var(--flatwp-text-secondary);
+  padding: 3rem 0 2rem;
 }
 
 .footer__title {
   color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
 }
 
 .footer__link-item {
-  color: #a3a3a3;
+  color: var(--flatwp-text-secondary);
+  transition: color 0.2s ease;
 }
 
 .footer__link-item:hover {
-  color: #ff6b2b;
+  color: var(--flatwp-orange);
+  text-decoration: none;
 }
 
-/* Tables */
-table {
-  border-color: #262626;
+.footer__copyright {
+  color: var(--flatwp-text-muted);
+  font-size: 0.875rem;
 }
 
-thead {
-  background: #151515;
+/* ============================================
+   PAGINATION - NAVIGATION
+   ============================================ */
+
+.pagination-nav__link {
+  border: 1px solid var(--flatwp-border-subtle);
+  background: var(--flatwp-bg-secondary);
+  border-radius: var(--ifm-border-radius);
+  transition: all 0.2s ease;
 }
 
-/* Admonitions */
-.admonition {
-  border-left-width: 4px;
-  background: #151515;
-  border-color: #262626;
+.pagination-nav__link:hover {
+  border-color: var(--flatwp-orange);
+  background: var(--flatwp-bg-tertiary);
+  text-decoration: none;
 }
 
-.admonition-heading {
+.pagination-nav__link__label {
   color: #ffffff;
+  font-weight: 600;
 }
 
-/* Search bar */
-.navbar__search-input {
-  background: #151515;
-  border: 1px solid #262626;
-  color: #e5e5e5;
+.pagination-nav__sublabel {
+  color: var(--flatwp-text-secondary);
 }
 
-.navbar__search-input:focus {
-  border-color: #ff6b2b;
+/* ============================================
+   HERO SECTION - HOMEPAGE
+   ============================================ */
+
+.hero {
+  background: linear-gradient(135deg, var(--flatwp-bg-primary) 0%, var(--flatwp-bg-secondary) 100%);
+  color: #fff;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Scrollbar */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 107, 43, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  color: var(--flatwp-text-secondary);
+  font-weight: 400;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+@media screen and (max-width: 996px) {
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  .hero__subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+/* ============================================
+   FEATURE SECTIONS - HOMEPAGE
+   ============================================ */
+
+/* Dark theme - keep white text on dark backgrounds */
+[data-theme='dark'] .features h3,
+[data-theme='dark'] .text--center h3,
+[data-theme='dark'] [class*="padding-horiz"] h3 {
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .features p,
+[data-theme='dark'] .text--center p {
+  color: var(--flatwp-text-secondary);
+  line-height: 1.7;
+}
+
+/* Light theme - use dark text on light backgrounds */
+[data-theme='light'] .features h3,
+[data-theme='light'] .text--center h3,
+[data-theme='light'] [class*="padding-horiz"] h3 {
+  color: #1a1a1a !important;
+  font-weight: 700;
+}
+
+[data-theme='light'] .features p,
+[data-theme='light'] .text--center p {
+  color: #404040 !important;
+  line-height: 1.7;
+}
+
+/* Force dark background for features section to maintain dark theme */
+.features {
+  background: var(--flatwp-bg-primary) !important;
+}
+
+/* Override for light mode if user switches */
+[data-theme='light'] .features {
+  background: #ffffff !important;
+}
+
+/* ============================================
+   SCROLLBAR - CUSTOM STYLING
+   ============================================ */
+
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: var(--flatwp-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 5px;
+  background: var(--flatwp-border-medium);
+  border-radius: 6px;
+  border: 2px solid var(--flatwp-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: var(--flatwp-border-strong);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--flatwp-border-medium) var(--flatwp-bg-primary);
+}
+
+/* ============================================
+   ACCESSIBILITY - WCAG AA COMPLIANT
+   ============================================ */
+
+*:focus-visible {
+  outline: 2px solid var(--flatwp-orange);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--flatwp-orange);
+  outline-offset: 2px;
+}
+
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--flatwp-orange);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   SEARCH - CLEAN INPUT
+   ============================================ */
+
+.navbar__search-input {
+  background: var(--flatwp-bg-tertiary);
+  border: 1px solid var(--flatwp-border-subtle);
+  color: var(--flatwp-text-primary);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--flatwp-orange);
+  box-shadow: 0 0 0 3px var(--flatwp-orange-subtle);
+  outline: none;
+}
+
+.navbar__search-input::placeholder {
+  color: var(--flatwp-text-muted);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.margin-top--none { margin-top: 0 !important; }
+.margin-top--sm { margin-top: var(--ifm-spacing-sm) !important; }
+.margin-top--md { margin-top: var(--ifm-spacing-md) !important; }
+.margin-top--lg { margin-top: var(--ifm-spacing-lg) !important; }
+.margin-top--xl { margin-top: var(--ifm-spacing-xl) !important; }
+
+.margin-bottom--none { margin-bottom: 0 !important; }
+.margin-bottom--sm { margin-bottom: var(--ifm-spacing-sm) !important; }
+.margin-bottom--md { margin-bottom: var(--ifm-spacing-md) !important; }
+.margin-bottom--lg { margin-bottom: var(--ifm-spacing-lg) !important; }
+.margin-bottom--xl { margin-bottom: var(--ifm-spacing-xl) !important; }
+
+/* ============================================
+   ANCHOR LINKS
+   ============================================ */
+
+.anchor {
+  color: var(--flatwp-text-muted) !important;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.anchor:hover {
+  color: var(--flatwp-orange) !important;
+  opacity: 1;
 }

@@ -1,4 +1,5 @@
 /**
+ * Homepage Module Styles
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
@@ -10,14 +11,43 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-}
-
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 1.5rem;
+  }
+
+  .buttons {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .heroBanner {
+    padding: 2.5rem 1rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 1.5rem;
+  }
+
+  .buttons a {
+    width: 100%;
+    justify-content: center;
+  }
 }
