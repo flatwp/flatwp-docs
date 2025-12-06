@@ -2,128 +2,197 @@
 sidebar_position: 1
 ---
 
-# Getting Started
+# Welcome to FlatWP
 
-Welcome to **FlatWP** - the easiest way to build modern, performant websites with WordPress and Next.js.
+Build blazingly fast, SEO-optimized WordPress sites with Next.js 15, React 19, and TypeScript.
 
 ## What is FlatWP?
 
-FlatWP is a complete starter kit that combines WordPress's easy content management with Next.js's speed and modern features. Get started quickly and build websites that are fast, beautiful, and easy to maintain.
+FlatWP is a production-ready starter kit that combines WordPress's powerful content management with Next.js's modern rendering capabilities. It leverages **Incremental Static Regeneration (ISR)** with on-demand revalidation to deliver exceptional performance while maintaining content freshness.
 
 ### Key Features
 
-- ⚡ **Lightning Fast**: Optimized performance with smart caching
-- 🎨 **Beautiful UI**: Modern design with TailwindCSS and pre-built components
-- 🔄 **Auto-Updates**: Content changes in WordPress appear on your site automatically
-- 📱 **Mobile-Ready**: Fully responsive on all devices
-- 🔧 **Easy Customization**: Change colors, add features, and extend functionality
-- 🚀 **React Dashboard**: Modern WordPress admin with real-time monitoring
-- 📦 **Open Source**: Free to use with MIT license
+- ⚡ **95+ Lighthouse Score** - Exceptional performance across all metrics
+- 🔄 **ISR + On-Demand Revalidation** - Fresh content without constant rebuilds
+- 🎯 **Fully Type-Safe** - GraphQL Code Generator for complete type safety
+- 🚀 **One-Click Deploy** - Vercel, Netlify, Railway support
+- 🐳 **Docker Development** - Complete local environment included
+- 📱 **Image Optimization** - Automatic WebP/AVIF conversion
+- 🔧 **Modern Stack** - Next.js 15.5.6 + React 19 + TypeScript
+- 📦 **Open Source** - MIT licensed, free forever
 
-## What You'll Need
+## Why FlatWP?
 
-Before getting started with FlatWP, make sure you have:
+### Performance First
+- **95+ Lighthouse Score** across all metrics
+- **Sub-2-second LCP** on 3G connections
+- **Optimized Core Web Vitals** (LCP, FID, CLS, TTFB)
+- **Intelligent rendering strategies** per content type
 
-- **Node.js** version 20.0 or higher
-- **WordPress** 6.0+ with WPGraphQL plugin
-- **Package Manager**: npm, yarn, or pnpm (we recommend pnpm)
-- Basic knowledge of WordPress and web development
+### Developer Experience
+- **Fully Type-Safe** with GraphQL Code Generator
+- **Modern Stack**: Next.js 15.5.6 + React 19
+- **One-Click Deploy** to Vercel, Netlify, or Railway
+- **Docker Development** environment included
+- **Automatic type generation** from WordPress schema
 
-:::info Prerequisites Check
-Not sure if you have everything? Run these commands:
+### Production Ready
+- **ISR with on-demand revalidation** - content updates without rebuilds
+- **Preview mode** for draft content
+- **Image optimization** with automatic WebP/AVIF conversion
+- **SEO optimized** with structured data and meta tags
+- **No Sentry** - cleaner codebase, better performance
+
+## Requirements
+
+- **Node.js 20+** - Required for Next.js 15
+- **pnpm 8+** - Package manager (recommended)
+- **WordPress 6.4+** - With WPGraphQL plugin
+- **MySQL 8.0+** - For WordPress (if self-hosting)
+
+:::tip Quick Version Check
 ```bash
-node --version  # Should be 20.0 or higher
-npm --version   # Any recent version
+node --version  # Should show v20.0.0 or higher
+pnpm --version  # Should show 8.0.0 or higher
 ```
 :::
 
 
 
-## Quick Links
+## Quick Start
 
-<div class="margin-vert--lg">
-  <a href="/docs/quick-start" class="button button--primary button--lg">
-    Quick Start Guide →
+Get started in under 5 minutes:
+
+```bash
+# Using pnpm (recommended)
+pnpm create flatwp my-site
+
+# Using npm
+npx create-flatwp my-site
+
+# Using yarn
+yarn create flatwp my-site
+```
+
+Then start developing:
+
+```bash
+cd my-site
+pnpm dev
+```
+
+Visit http://localhost:3010 to see your site!
+
+## One-Click Deploy
+
+Deploy FlatWP instantly to your favorite platform:
+
+<div style={{display: 'flex', gap: '1rem', marginTop: '1rem', marginBottom: '2rem'}}>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/flatwp/FlatWP-Starter">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
   </a>
-  <a href="/docs/acf-setup" class="button button--secondary button--lg" style={{marginLeft: '1rem'}}>
-    ACF Setup
+  <a href="https://app.netlify.com/start/deploy?repository=https://github.com/flatwp/FlatWP-Starter">
+    <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />
+  </a>
+  <a href="https://railway.app/template/flatwp">
+    <img src="https://railway.app/button.svg" alt="Deploy on Railway" />
   </a>
 </div>
+
+## Architecture Overview
+
+```
+┌─────────────────────────────────────────────────┐
+│ WordPress CMS (Content Management)              │
+│ - WPGraphQL Plugin                              │
+│ - FlatWP Companion Plugin                       │
+│ - ACF (Optional)                                │
+└────────────────┬────────────────────────────────┘
+                 │ GraphQL API
+                 ▼
+┌─────────────────────────────────────────────────┐
+│ FlatWP (Next.js Application)                    │
+│ - Static Generation + ISR                       │
+│ - On-Demand Revalidation                        │
+│ - Server Components                             │
+│ - Image Optimization                            │
+└────────────────┬────────────────────────────────┘
+                 │ Deployment
+                 ▼
+┌─────────────────────────────────────────────────┐
+│ Vercel / Netlify / Railway                      │
+│ - Automatic deployments                         │
+│ - Edge network                                  │
+│ - Analytics                                     │
+└─────────────────────────────────────────────────┘
+```
 
 ## What's Included
 
 FlatWP comes with everything you need:
 
-### Next.js Starter Template
-- Pre-built pages (Home, Blog, About, Contact)
-- Responsive navigation and footer
-- Blog post layout with featured images
-- Page builder with flexible content blocks
-- Contact form with email integration
-- Search functionality
-- SEO optimization
-
-### WordPress Plugin
-- Modern React-based admin dashboard
-- Real-time connection monitoring
-- Cache management interface
-- Automatic revalidation webhooks
-- Preview mode for draft content
-- Settings management
-
-### Ready-to-Use Components
-- 8 content block types (Hero, Features, CTA, Testimonials, etc.)
-- 2 sidebar widget types
-- Image optimization with blur placeholders
-- Responsive design system
-- Dark mode support
+- ✅ **Production-ready Next.js app** with optimal configuration
+- ✅ **WordPress plugin** for revalidation and webhooks
+- ✅ **Type-safe GraphQL** queries with code generation
+- ✅ **Docker Compose** environment for local development
+- ✅ **Image optimization** with automatic format conversion
+- ✅ **Preview mode** for draft content
+- ✅ **SEO optimization** with meta tags and structured data
+- ✅ **Performance monitoring** setup ready
+- ✅ **Comprehensive documentation** and examples
 
 ## Tech Stack
 
-Built with modern, battle-tested technologies:
+### Frontend
+- **Next.js 15.5.6** - App Router with Server Components
+- **React 19** - Latest React features
+- **TypeScript** - Strict mode enabled
+- **TailwindCSS v4** - Utility-first styling
+- **Shadcn/ui** - Accessible component library
 
-- **Next.js 15** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **TailwindCSS** - Utility-first styling
-- **Shadcn/ui** - Beautiful, accessible components
-- **WordPress** - Powerful content management
-- **WPGraphQL** - Efficient data fetching
-- **ACF Pro** - Flexible custom fields (optional)
+### WordPress
+- **WordPress 6.4+** - Modern WordPress features
+- **WPGraphQL** - GraphQL API for WordPress
+- **FlatWP Companion** - Custom plugin for revalidation
+- **ACF Pro** - Optional for flexible content
 
-:::tip Why These Technologies?
-Each tool is chosen for production-ready reliability, active community support, and excellent documentation. You're building on a solid foundation used by thousands of sites.
-:::
+### Development
+- **pnpm** - Fast, disk space efficient package manager
+- **GraphQL Code Generator** - Type-safe queries
+- **Docker Compose** - Local WordPress development
+- **Turborepo** - Monorepo build system
 
-## Next Steps
-
-Ready to build your first FlatWP site? Follow our [Quick Start Guide](/docs/quick-start) to get up and running in under 10 minutes.
-
-### Learning Path
-
-1. **[Quick Start](/docs/quick-start)** - Install and set up in 10 minutes
-2. **[ACF Setup](/docs/acf-setup)** - Configure custom fields with examples
-3. **[Customization](/docs/customization)** - Customize colors, components, and features
-4. **[WordPress Plugin](/docs/wordpress-plugin)** - Learn about the React dashboard
-5. **[Configuration](/docs/configuration)** - Advanced configuration options
-6. **[Deployment](/docs/deployment)** - Deploy to production
-
-## Who Is This For?
+## Use Cases
 
 FlatWP is perfect for:
 
-- **Freelancers** building client websites
-- **Agencies** delivering modern WordPress projects
-- **Developers** wanting to use React with WordPress
-- **Bloggers** who want better performance
-- **Anyone** building content-driven websites
+- **Marketing websites** - Fast, SEO-friendly, easy to manage
+- **Blogs & publications** - Content-focused with great performance
+- **Portfolio sites** - Beautiful, performant, type-safe
+- **Small business sites** - Professional without complexity
+- **Agency projects** - Repeatable, scalable architecture
+
+## Learning Path
+
+1. **[Quick Start](/docs/getting-started/quick-start)** - Get up and running in 5 minutes
+2. **[One-Click Deploy](/docs/getting-started/one-click-deploy)** - Deploy to production instantly
+3. **[WordPress Setup](/docs/wordpress/plugin-setup)** - Configure your WordPress backend
+4. **[Development Guide](/docs/development/project-structure)** - Learn the codebase
+5. **[Deployment](/docs/deployment/vercel)** - Deploy to production
 
 ## Community & Support
 
+- **Documentation**: [flatwp.com/docs](https://flatwp.com/docs)
 - **GitHub**: [github.com/flatwp](https://github.com/flatwp)
-- **Discussions**: [GitHub Discussions](https://github.com/flatwp/flatwp-starter/discussions)
-- **Issues**: [GitHub Issues](https://github.com/flatwp/flatwp-starter/issues)
-- **Website**: [flatwp.com](https://flatwp.com)
+- **Issues**: [Report bugs](https://github.com/flatwp/FlatWP-Starter/issues)
+- **Discussions**: [Ask questions](https://github.com/flatwp/FlatWP-Starter/discussions)
 
 ## License
 
-FlatWP is open source and MIT licensed. Free to use for personal and commercial projects! 🚀
+FlatWP is open source software licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+Free to use for personal and commercial projects.
+
+---
+
+**Let's build something amazing together!** 🚀

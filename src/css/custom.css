@@ -766,10 +766,10 @@ pre {
 .theme-admonition,
 [class*="admonition"] {
   border-left-width: 4px;
-  background: var(--flatwp-bg-secondary) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
   border-radius: var(--ifm-border-radius);
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  margin: 1rem;
+  padding: 0.25rem;
 }
 
 .admonition-heading,
@@ -778,6 +778,7 @@ pre {
   color: #ffffff !important;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -787,12 +788,20 @@ pre {
 .admonitionContent_BuS1,
 [class*="admonitionContent"] {
   color: var(--flatwp-text-secondary) !important;
+  padding: 0.5rem 1rem 0.75rem 1rem;
 }
 
 .admonition-content p,
 .admonitionContent_BuS1 p,
 [class*="admonitionContent"] p {
   color: var(--flatwp-text-secondary) !important;
+  margin-bottom: 0.75rem;
+}
+
+.admonition-content p:last-child,
+.admonitionContent_BuS1 p:last-child,
+[class*="admonitionContent"] p:last-child {
+  margin-bottom: 0;
 }
 
 /* Type-specific colors */
@@ -800,34 +809,64 @@ pre {
 .theme-admonition-note,
 .alert--info {
   border-left-color: #58a6ff !important;
-  background: rgba(88, 166, 255, 0.1) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
 }
 
 .admonition-tip,
 .theme-admonition-tip,
 .alert--success {
   border-left-color: #3fb950 !important;
-  background: rgba(63, 185, 80, 0.1) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
 }
 
 .admonition-warning,
 .theme-admonition-warning,
 .alert--warning {
   border-left-color: #d29922 !important;
-  background: rgba(210, 153, 34, 0.1) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
 }
 
 .admonition-danger,
 .theme-admonition-danger,
 .alert--danger {
   border-left-color: #f85149 !important;
-  background: rgba(248, 81, 73, 0.1) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
 }
 
 .admonition-info,
 .theme-admonition-info {
   border-left-color: #79c0ff !important;
-  background: rgba(121, 192, 255, 0.1) !important;
+  background: var(--flatwp-bg-secondary) !important; /* #111111 */
+}
+
+/* Admonition type headings - colored text to match border */
+.admonition-note .admonition-heading,
+.admonition-note [class*="admonitionHeading"],
+.alert--info .admonition-heading {
+  color: #58a6ff !important;
+}
+
+.admonition-tip .admonition-heading,
+.admonition-tip [class*="admonitionHeading"],
+.alert--success .admonition-heading {
+  color: #3fb950 !important;
+}
+
+.admonition-warning .admonition-heading,
+.admonition-warning [class*="admonitionHeading"],
+.alert--warning .admonition-heading {
+  color: #d29922 !important;
+}
+
+.admonition-danger .admonition-heading,
+.admonition-danger [class*="admonitionHeading"],
+.alert--danger .admonition-heading {
+  color: #f85149 !important;
+}
+
+.admonition-info .admonition-heading,
+.admonition-info [class*="admonitionHeading"] {
+  color: #79c0ff !important;
 }
 
 /* Admonition icons */
