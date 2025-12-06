@@ -2,7 +2,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 /**
  * FlatWP Documentation Sidebar
- * Organized by user journey: Getting Started → Development → Production → Help
+ * Organized by user journey: Getting Started → Configuration → Production → Help
  */
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
@@ -11,6 +11,11 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       id: 'intro',
       label: 'Welcome',
+    },
+    {
+      type: 'doc',
+      id: 'quick-start',
+      label: 'Quick Start',
     },
 
     // Getting Started
@@ -26,47 +31,14 @@ const sidebars: SidebarsConfig = {
       ],
     },
 
-    // Features
-    {
-      type: 'category',
-      label: 'Core Features',
-      collapsed: false,
-      items: [
-        'features/isr-revalidation',
-        'features/dynamic-pages',
-        'features/image-optimization',
-        'features/preview-mode',
-        'features/search',
-        'features/performance',
-      ],
-    },
-
     // WordPress Integration
     {
       type: 'category',
       label: 'WordPress',
       collapsed: false,
       items: [
-        'wordpress/plugin-setup',
-        'wordpress/graphql-configuration',
         'wordpress-plugin',
         'acf-setup',
-        'wordpress/webhooks',
-      ],
-    },
-
-    // Development
-    {
-      type: 'category',
-      label: 'Development',
-      collapsed: false,
-      items: [
-        'development/project-structure',
-        'development/environment-variables',
-        'development/graphql-setup',
-        'development/typescript',
-        'development/testing',
-        'development/debugging',
       ],
     },
 
@@ -74,7 +46,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Configuration',
-      collapsed: true,
+      collapsed: false,
       link: {
         type: 'doc',
         id: 'configuration/index',
@@ -91,101 +63,44 @@ const sidebars: SidebarsConfig = {
 
     // Deployment
     {
-      type: 'category',
+      type: 'doc',
+      id: 'deployment',
       label: 'Deployment',
-      collapsed: true,
-      items: [
-        'deployment/vercel',
-        'deployment/netlify',
-        'deployment/railway',
-        'deployment/docker',
-        'deployment/custom-hosting',
-      ],
     },
 
     // API Reference
     {
-      type: 'category',
+      type: 'doc',
+      id: 'api-reference',
       label: 'API Reference',
-      collapsed: true,
-      items: [
-        'api/rest-endpoints',
-        'api/graphql-queries',
-        'api/revalidation-api',
-        'api/preview-api',
-        'api-reference',
-      ],
-    },
-
-    // Guides
-    {
-      type: 'category',
-      label: 'Guides',
-      collapsed: true,
-      items: [
-        'guides/custom-blocks',
-        'guides/styling',
-        'guides/seo-optimization',
-        'guides/multi-language',
-        'guides/ecommerce',
-      ],
     },
 
     // Customization
     {
-      type: 'category',
+      type: 'doc',
+      id: 'customization',
       label: 'Customization',
-      collapsed: true,
-      items: [
-        'customization',
-      ],
+    },
+
+    // Architecture
+    {
+      type: 'doc',
+      id: 'architecture',
+      label: 'Architecture',
     },
 
     // Troubleshooting
     {
-      type: 'category',
+      type: 'doc',
+      id: 'troubleshooting',
       label: 'Troubleshooting',
-      collapsed: true,
-      items: [
-        'troubleshooting/build-errors',
-        'troubleshooting/graphql-errors',
-        'troubleshooting/deployment-issues',
-        'troubleshooting/performance-tuning',
-        'troubleshooting',
-      ],
     },
 
-    // Reference
+    // FAQ
     {
-      type: 'category',
-      label: 'Reference',
-      collapsed: true,
-      items: [
-        'reference/configuration',
-        'reference/cli-commands',
-        'reference/folder-structure',
-        'reference/dependencies',
-      ],
-    },
-
-    // Architecture & Advanced
-    {
-      type: 'category',
-      label: 'Advanced',
-      collapsed: true,
-      items: [
-        'architecture',
-      ],
-    },
-
-    // Help & Support
-    {
-      type: 'category',
-      label: 'Help & Support',
-      collapsed: false,
-      items: [
-        'faq',
-      ],
+      type: 'doc',
+      id: 'faq',
+      label: 'FAQ',
     },
   ],
 };

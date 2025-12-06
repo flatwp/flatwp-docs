@@ -15,7 +15,8 @@
   --flatwp-orange-darker: #ea5410;
   --flatwp-orange-light: #ff7c3c;
   --flatwp-orange-lighter: #ff8d4d;
-  --flatwp-orange-subtle: rgba(255, 107, 43, 0.1);
+  --flatwp-orange-link: #ff9900;  /* New lighter orange for regular links */
+  --flatwp-orange-subtle: rgba(255, 153, 0, 0.1);  /* Updated for new link color */
   --flatwp-orange-hover: rgba(255, 107, 43, 0.15);
 
   /* Dark Background System */
@@ -250,17 +251,18 @@ article,
 }
 
 /* ============================================
-   LINKS - ORANGE BRAND COLOR
+   LINKS - LIGHTER ORANGE WITH INTENSE HOVER
    ============================================ */
 
 a {
-  color: var(--flatwp-orange);
+  color: var(--flatwp-orange-link);  /* Lighter orange #ff9900 */
   text-decoration: none;
+  font-weight: 400;  /* Normal weight - no bold */
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--flatwp-orange-lighter);
+  color: var(--flatwp-orange);  /* Intense orange on hover #ff6b2b */
   text-decoration: underline;
 }
 
@@ -488,7 +490,7 @@ pre {
 
 .navbar__link {
   color: var(--flatwp-text-secondary);
-  font-weight: 500;
+  font-weight: 400;  /* Normal weight for navbar links */
   transition: color 0.2s ease;
 }
 
@@ -497,8 +499,8 @@ pre {
 }
 
 .navbar__link--active {
-  color: var(--flatwp-orange);
-  font-weight: 600;
+  color: var(--flatwp-orange-link);  /* Lighter orange for active */
+  font-weight: 500;  /* Medium weight for active navbar links */
 }
 
 /* ============================================
@@ -519,6 +521,7 @@ pre {
   border-radius: 6px;
   transition: all 0.2s ease;
   padding: 0.5rem 0.75rem;
+  font-weight: 400;  /* Normal weight for regular sidebar links */
 }
 
 .menu__link:hover {
@@ -527,19 +530,19 @@ pre {
 }
 
 .menu__link--active {
-  color: var(--flatwp-orange);
+  color: var(--flatwp-orange-link);  /* Lighter orange for active links */
   background: var(--flatwp-orange-subtle);
-  font-weight: 600;
+  font-weight: 500;  /* Slightly bolder for active, but not too bold */
 }
 
 .menu__link--active:hover {
-  color: var(--flatwp-orange-lighter);
+  color: var(--flatwp-orange);  /* Intense orange on hover */
   background: var(--flatwp-orange-hover);
 }
 
-/* Category labels */
+/* Category/parent labels - keep these at 600 weight */
 .menu__list-item-collapsible .menu__link {
-  font-weight: 600;
+  font-weight: 600;  /* Parent links stay at 600 weight */
   color: var(--flatwp-text-primary);
 }
 
@@ -553,17 +556,18 @@ pre {
 
 .breadcrumbs__link {
   color: var(--flatwp-text-secondary) !important;
+  font-weight: 400;  /* Normal weight for breadcrumb links */
   transition: color 0.2s ease;
 }
 
 .breadcrumbs__link:hover {
-  color: var(--flatwp-orange) !important;
+  color: var(--flatwp-orange-link) !important;  /* Lighter orange for hover */
   background: transparent;
 }
 
 .breadcrumbs__item--active .breadcrumbs__link {
   color: #ffffff !important;
-  font-weight: 600;
+  font-weight: 500;  /* Medium weight for active breadcrumb */
 }
 
 /* ============================================
@@ -580,6 +584,7 @@ pre {
   padding-left: 0.75rem !important;
   border-left: 2px solid transparent;
   margin-left: -2px;
+  font-weight: 400;  /* Normal weight for TOC links */
 }
 
 .table-of-contents__link:hover {
@@ -589,13 +594,13 @@ pre {
 
 .table-of-contents__link--active,
 .table-of-contents__link.toc-highlight {
-  color: var(--flatwp-orange) !important;
-  font-weight: 600;
-  border-left-color: var(--flatwp-orange);
+  color: var(--flatwp-orange-link) !important;  /* Lighter orange for active */
+  font-weight: 500;  /* Medium weight for active, not too bold */
+  border-left-color: var(--flatwp-orange-link);
 }
 
 .table-of-contents__link--active:hover {
-  color: var(--flatwp-orange-lighter) !important;
+  color: var(--flatwp-orange) !important;  /* Intense orange on hover */
 }
 
 /* ============================================
@@ -976,11 +981,12 @@ tr:hover {
 
 .footer__link-item {
   color: var(--flatwp-text-secondary);
+  font-weight: 400;  /* Normal weight for footer links */
   transition: color 0.2s ease;
 }
 
 .footer__link-item:hover {
-  color: var(--flatwp-orange);
+  color: var(--flatwp-orange-link);  /* Lighter orange for hover */
   text-decoration: none;
 }
 
